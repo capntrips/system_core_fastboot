@@ -164,7 +164,6 @@ cc_binary {
     shared_libs: [
         "android.hardware.boot@1.0",
         "android.hardware.boot@1.1",
-        "android.hardware.fastboot@1.1",
         "android.hardware.health@2.0",
         "libasyncio",
         "libbase",
@@ -183,6 +182,8 @@ cc_binary {
     ],
 
     static_libs: [
+        "android.hardware.fastboot@1.0",
+        "android.hardware.fastboot@1.1",
         "libc++fs",
         "libhealthhalutils",
         "libsnapshot_cow",
