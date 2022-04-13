@@ -409,3 +409,52 @@ cc_test_host {
         ":fastboot_test_vendor_boot_v4_with_frag"
     ],
 }
+
+//
+// Build device fastboot
+//
+
+cc_binary {
+    name: "fastboot_device",
+    defaults: ["fastboot_defaults"],
+
+    srcs: [
+        "bootimg_utils.cpp",
+        "fastboot.cpp",
+        "fs.cpp",
+        "main.cpp",
+        "socket.cpp",
+        "tcp.cpp",
+        "udp.cpp",
+        "util.cpp",
+        "vendor_boot_img_utils.cpp",
+        "fastboot_driver.cpp",
+        "usb_linux.cpp",
+    ],
+
+    shared_libs: [
+        "libziparchive",
+        "libsparse",
+        "libutils",
+        "liblog",
+        "libz",
+        "libbase",
+        "libcutils",
+        "liblp",
+        "libcrypto",
+        "libext4_utils",
+    ],
+
+    static_libs: [
+        "libdiagnose_usb",
+        "libbuildversion",
+    ],
+
+    header_libs: [
+        "avb_headers",
+        "bootimg_headers",
+        "libstorage_literals_headers",
+    ],
+
+    generated_headers: ["platform_tools_version"]
+}
